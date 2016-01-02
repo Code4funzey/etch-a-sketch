@@ -1,0 +1,529 @@
+<doctype! html>
+<head>
+	<title></title>
+
+</head>
+<body>
+<style>
+@import url(https://fonts.googleapis.com/css?family=Dancing+Script);
+
+body{
+	background-color:lightblue;
+	font-family:sans-serif;
+	margin:0px;
+	padding:0px;
+}
+h1{
+	text-align:center;
+	color:#872D62;
+}
+.etch-a-sketch-shell{
+	height:600px;
+	width:700px; 
+	background-color:#8E0707;
+	border-radius:15px;
+	margin:0px auto;
+	box-shadow:0px 0px 20px #000 inset, 5px 5px 10px #000;
+	z-index: -999;
+}
+.sketch-pad{
+	/*border:1px solid #000;*/
+	margin:0px auto;
+	width:500px;
+	background-color:#bbb;
+	overflow:hidden;
+	box-shadow:3px 3px 20px #000 inset, 0px 0px 20px #000 inset;
+	border-radius:10px; 
+	margin-top:25px;
+}
+.row{
+	clear:both;
+}
+.pixel{
+	height:5px; width:5px;
+	/*border:1px solid #000;*/
+	float:left;
+}
+.pixel:hover{
+
+}
+.knob-left{
+	height:100px; width:143px;
+	float:left;
+	margin-left:20px;
+	margin-top:10px;
+}
+.knob-right{
+	height:100px; width:120px;
+	float:right;
+	clear:none;
+	margin-right: 20px;
+	margin-top:10px;
+	position:relative;
+	text-align:center;
+}
+.title{
+	font-size:3rem;
+	font-family: 'Dancing Script', cursive;
+}
+.gold{
+	color:gold;
+	text-shadow:2px 2px 1px #000;
+	text-align:center;
+	padding-top:20px;
+	font-size:1.2rem;
+}
+.bottom-text{
+	float:left;
+	color:#8E0707;
+	text-shadow:1px 1px 2px #510404;
+	text-align:center;
+	padding-top:20px;
+	width:397px;
+}
+.ohio-art{
+	font-size:1.8rem;
+	font-weight:bolder;
+	line-height:120%;
+}
+.bottom-text-magic{
+	font-size:13px;
+}
+.world-of-toys{
+	font-family: 'Dancing Script', cursive;
+	font-size:1.5rem;
+}
+.color-choice{
+	height:25px;
+	width:25px;
+	display:inline-block;
+	margin:0px auto;
+	border-radius:100%;
+	box-shadow:0px 0px 4px #000 inset, 1px 1px 3px #222;
+	cursor:pointer;
+	transition: all 0.3s linear;
+	color:#fff;
+	overflow:hidden;
+	line-height:1.7;
+}
+.color1{
+	background-color:#555;
+}
+.color2{
+	background-color:red;
+}
+.color3{
+	background-color:orange;
+}
+.color4{
+	background-color:yellow;
+}
+.color5{
+	background-color:green;
+}
+.color6{
+	background-color:blue;
+}
+.color7{
+}
+.color8{
+}
+.randomColor{
+	background-color:#ddd;
+	color:#555;
+}
+.active{
+	box-shadow:1px 1px 3px #000 inset, 0px 0px 1px #000;
+}
+.key-holder{
+	margin:0px auto;
+	width:170px;
+}
+.key{
+	height:30px;
+	width:30px;
+	text-align:center;
+	display:inline-block;
+	background-color:#ddd;
+	border-radius:5px;
+	border-top:7px solid #ccc;
+	border-right:7px solid #bbb;
+	border-bottom:7px solid #bbb;
+	border-left:7px solid #ccc;
+	box-shadow:2px 2px 5px #000;
+	cursor:pointer;
+	color:#555;
+	margin-right:3px;
+	line-height:1.8;
+}
+.key:active{
+/*	border-top:7px solid #bbb;
+	border-right:7px solid #ccc;
+	border-bottom:7px solid #ccc;
+	border-left:7px solid #bbb;*/
+	box-shadow:0px 0px 5px #000,0px 0px 5px #000;
+}
+.key-active{
+	box-shadow:0px 0px 5px #000,0px 0px 5px #000;
+	background-color:yellow;
+	border-top:7px solid #bbb;
+	border-right:7px solid #ccc;
+	border-bottom:7px solid #ccc;
+	border-left:7px solid #bbb;	
+}
+.key-w{
+	clear:both;
+	display:block;
+	margin-left:52px;
+	margin-bottom:8px;
+}
+.key-clear{
+	width:100px;
+	height:20px;
+	text-shadow:none;
+	margin-top:3px;
+	line-height:1.4;
+}
+.text-center{
+	text-align:center;
+}
+</style>
+<br>
+<div class="text-center">
+	Pick a color to start, WASD controls, Mouse controls as well.
+</div>
+<div class="etch-a-sketch-shell"><!-- Contains etch-a-sketch-shell -->
+<p class="gold">MAGIC&nbsp;&nbsp;&nbsp;&nbsp;<span class="title">Pixel A Sketch&reg;</span>&nbsp;&nbsp;&nbsp;&nbsp;SCREEN</p>
+	<div class="sketch-pad"> <!-- Contains sketch-pad -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		 <script> 
+		for (var i = 0 ; i < 75; i++) {
+			document.write('<div class="row">');
+			for (var j = 0; j < 100; j++) {
+				document.write('<div class="pixel pixel-');
+				document.write(i + '-' + j + '"></div>');
+			};
+			document.write('</div>');
+		};
+		</script>
+	</div><!-- Contains sketch-pad-->
+	<div class="knob-left">
+		<div class="key-holder">
+			<div class="key key-w up">w</div>
+			<div class="key key-a left">a</div>
+			<div class="key key-s down">s</div>
+			<div class="key key-d right">d</div>
+		</div>		
+	</div>
+	<div class="bottom-text"> 
+		<span class="ohio-art">CODE ART</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="world-of-toys">World Of Pixels&reg;</span> <BR><span class="bottom-text-magic">MAGIC SCREEN IS JAVASCRIPT SET IN A STURDY DIV TAG<BR>USE WITH CARE</span>
+	</div>
+	<div class="knob-right">
+		<div class="color-choice color1"></div>
+		<div class="color-choice color2"></div>
+		<div class="color-choice color3"></div>
+		<div class="color-choice color4"></div>
+		<br>
+		<div class="color-choice color5"></div>
+		<div class="color-choice color6"></div>
+		<div class="color-choice color7">E</div>
+		<div class="color-choice color8 randomColor">R</div>
+		<div class="key key-clear clear">Clear</div>
+	</div>
+</div><!-- Contains etch-a-sketch-shell -->
+
+<script>
+//x to the left
+var xVal = 73;
+//y to the sky
+var yVal = 3;
+var currentColor;
+var maxColors = 8;
+
+	$(document).ready(function(){
+		//click button
+		$('.up').click(function(){
+			xVal --;
+			currentColor = addColor();
+			if (xVal >= 0) {
+				pixelLocation = ".pixel-" + xVal + "-" + yVal
+				removeColor(pixelLocation);;
+				$(pixelLocation).addClass(currentColor);			
+			} else if (xVal < 0) {
+				xVal ++;
+			};
+			cord();
+		});
+		$('.upleft').click(function(){
+			xVal --;
+			yVal --;
+			currentColor = addColor();
+			if (xVal >= 0 && yVal > 0) {
+				pixelLocation = ".pixel-" + xVal + "-" + yVal
+				removeColor(pixelLocation);;
+				$(pixelLocation).addClass(currentColor);			
+			} else if (xVal < 0 || yVal < 0) {
+				xVal ++;
+				yVal ++;
+			};
+			cord();
+		});
+		$('.upright').click(function(){
+			xVal --;
+			yVal ++;
+			currentColor = addColor();
+			if (xVal >= 0 && yVal <= 99) {
+				pixelLocation = ".pixel-" + xVal + "-" + yVal
+				removeColor(pixelLocation);;
+				$(pixelLocation).addClass(currentColor);			
+			} else if (xVal < 0 || yVal > 99) {
+				xVal ++;
+				yVal --;
+			};
+			cord();
+		});
+		$('.down').click(function(){
+			xVal ++;
+			currentColor = addColor();
+			if (xVal <= 74) {
+				pixelLocation = ".pixel-" + xVal + "-" + yVal;
+				removeColor(pixelLocation);
+				$(pixelLocation).addClass(currentColor);			
+			} else if (xVal >= 75) {
+				xVal --;
+			};
+		cord();
+		});
+		$('.downleft').click(function(){
+			xVal ++;
+			yVal --;
+			currentColor = addColor();
+			if (xVal <= 74 && yVal >= 0) {
+				pixelLocation = ".pixel-" + xVal + "-" + yVal;
+				removeColor(pixelLocation);
+				$(pixelLocation).addClass(currentColor);			
+			} else if (xVal >= 75 || yVal < 0) {
+				xVal --;
+				yVal ++;
+			};
+		cord();
+		});
+		$('.downright').click(function(){
+			xVal ++;
+			yVal ++;
+			currentColor = addColor();
+			if (xVal <= 74 && yVal <= 99) {
+				pixelLocation = ".pixel-" + xVal + "-" + yVal;
+				removeColor(pixelLocation);
+				$(pixelLocation).addClass(currentColor);			
+			} else if (xVal >= 75 || yVal > 99) {
+				xVal --;
+				yVal --;
+			};
+		cord();
+		});
+		$('.left').click(function(){
+			yVal --;
+			currentColor = addColor();
+			if (yVal >= 0) {
+				pixelLocation = ".pixel-" + xVal + "-" + yVal
+				removeColor(pixelLocation);;
+				$(pixelLocation).addClass(currentColor);			
+			} else if (yVal < 0) {
+				yVal ++;
+			};
+		cord();
+		});
+		$('.right').click(function(){
+			yVal ++;
+			currentColor = addColor();
+			if (yVal <= 99) {
+				pixelLocation = ".pixel-" + xVal + "-" + yVal;
+				removeColor(pixelLocation);
+				$(pixelLocation).addClass(currentColor);				
+			} else if (yVal > 99) {
+				yVal --;
+			};
+			cord();
+		});
+
+
+
+
+
+
+
+		//mouse hover
+		$('.color1').click(function(){
+			removeActive();
+			$(this).addClass('active');
+			$(".pixel").hover(function(){
+				removeColor(this);	        	        
+	    		$(this).addClass('color1');
+	    	});
+		});
+		$('.color2').click(function(){
+			removeActive();
+			$(this).addClass('active');
+			$(".pixel").hover(function(){	
+				removeColor(this);        
+	    		$(this).addClass('color2');
+	    	});
+		});
+		$('.color3').click(function(){
+			removeActive();
+			$(this).addClass('active');
+			$(".pixel").hover(function(){	        
+				removeColor(this);
+				$(this).addClass('color3');
+	    	});
+		});
+		$('.color4').click(function(){
+			removeActive()
+			$(this).addClass('active');
+			$(".pixel").hover(function(){	        
+				removeColor(this);
+				$(this).addClass('color4');
+	    	});
+		});
+		$('.color5').click(function(){
+			removeActive();
+			$(this).addClass('active');
+			$(".pixel").hover(function(){	        
+				removeColor(this);
+				$(this).addClass('color5');
+	    	});
+		});
+		$('.color6').click(function(){
+			removeActive();
+			$(this).addClass('active');
+			$(".pixel").hover(function(){	        
+				removeColor(this);
+				$(this).addClass('color6');
+	    	});
+		});
+		$('.color7').click(function(){
+			removeActive();
+			$(this).addClass('active');
+			$(".pixel").hover(function(){	        
+				removeColor(this);
+				$(this).addClass('color7');
+	    	});
+		});
+		$('.color8').click(function(){
+			removeActive();
+			$(this).addClass('active');
+			$(".pixel").hover(function(){	        
+				currentColor = addColor();
+				removeColor(this);
+				$(this).addClass(currentColor);
+	    	});
+		});
+
+
+		//keydown
+		$(document).keydown(function(e) {
+    		console.log(e.keyCode);
+		});
+		//up
+		$(document).keydown(function(e){
+    		if (e.keyCode == 87) 
+	    		xVal --;
+				currentColor = addColor
+				if (xVal >= 0) {
+					pixelLocation = ".pixel-" + xVal + "-" + yVal
+					removeColor(pixelLocation);
+					$(pixelLocation).addClass(currentColor);			
+				} else if (xVal < 0) {
+					xVal ++;
+			};
+			cord();         
+		});
+		//down
+		$(document).keydown(function(e){
+    		if (e.keyCode == 83) 
+				xVal ++;
+				currentColor = addColor()
+				if (xVal <= 74) {
+					pixelLocation = ".pixel-" + xVal + "-" + yVal;
+					removeColor(pixelLocation);
+					$(pixelLocation).addClass(currentColor);			
+				} else if (xVal >= 75) {
+					xVal --;
+			};
+			cord();        
+		});	
+		//left
+		$(document).keydown(function(e){
+    		if (e.keyCode == 65) 
+				yVal --;
+				currentColor = addColor()
+				if (yVal >= 0) {
+					pixelLocation = ".pixel-" + xVal + "-" + yVal
+					removeColor(pixelLocation);
+					$(pixelLocation).addClass(currentColor);			
+				} else if (yVal < 0) {
+					yVal ++;
+			};
+			cord();       
+		});	
+		//right
+		$(document).keydown(function(e){
+    		if (e.keyCode == 68) 
+				yVal ++;
+				currentColor = addColor();
+				if (yVal <= 99) {
+					pixelLocation = ".pixel-" + xVal + "-" + yVal;
+					removeColor(pixelLocation);
+					$(pixelLocation).addClass(currentColor);				
+				} else if (yVal > 99) {
+					yVal --;
+			};
+			cord();;       
+		});
+
+
+		//Clear button
+		//add are you sure
+		$('.clear').click(function(){
+			for (var i = 1; i <= maxColors; i ++ ) {
+				$('.pixel').removeClass('color'+i);
+			};
+		});	
+
+	});	
+
+//functions
+function cord(){
+	var cord = "x:"+xVal+" y:"+yVal;
+	console.log(cord);
+}
+function addColor(){
+	for (var i = 1; i <= maxColors-1; i++) {
+		if ($('.color' + i).hasClass('active')) {
+			colorClass = 'color' + i;
+			return colorClass;
+		}; 
+		if ($('.color' + 8).hasClass('active')) {
+			var num = getRandomInt(1,7)
+			colorClass = 'color' + num;
+			return colorClass;
+		};		
+	};
+}
+function removeColor(location){
+	for (var i = 1; i <= maxColors; i ++ ) {
+		$(location).removeClass('color'+i);
+	};
+}
+function removeActive(){
+	for (var i = 1; i <= maxColors; i ++ ) {
+			$('.color'+i).removeClass('active');
+		};	
+}
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+</script>
+</body>
+</html>
